@@ -1,0 +1,47 @@
+namespace: ericsson-ns
+name:
+  mmwv: mmwv
+  mb: midband
+  lb: lowband
+  mmwvrru: rru1
+  mbrru: rru2
+  lbrru: rru3
+  bbu: bbu
+  upflvp: upf1
+  lvp: lvp
+  upfcvp: upf2
+  cvp: cvp 
+image:
+  mmwv:
+    server: docker.io/sapan2211/goserver
+    client: docker.io/sapan2211/client:mmwv
+  mb: 
+    server: docker.io/sapan2211/goserver
+    client: docker.io/sapan2211/client:mb
+  lb: 
+    server: docker.io/sapan2211/goserver
+    client: docker.io/sapan2211/client:lb
+  mmwvrru:
+    server: docker.io/sapan2211/goserver
+    client: docker.io/sapan2211/client:mmwvrru
+  mbrru: 
+    server: docker.io/sapan2211/goserver
+    client: docker.io/sapan2211/client:mbrru
+  lbrru: 
+    server: docker.io/sapan2211/goserver
+    client: docker.io/sapan2211/client:lbrru
+  bbu: 
+    server: docker.io/sapan2211/goserver
+    client: docker.io/sapan2211/client:bbu
+  upflvp: 
+    server: docker.io/sapan2211/goserver
+    client: docker.io/sapan2211/client:upflvp
+  lvp: 
+    server: docker.io/sapan2211/goserver
+    client: docker.io/sapan2211/client:lvp
+  upfcvp: 
+    server: docker.io/sapan2211/goserver
+    client: docker.io/sapan2211/client:upfcvp
+  cvp: 
+    server: docker.io/sapan2211/goserver
+    client: docker.io/sapan2211/client:cvp

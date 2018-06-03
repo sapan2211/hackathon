@@ -1,0 +1,4 @@
+FROM docker.io/sapan2211/curl
+ADD mmwvrru-loop.sh /data/mmwvrru-loop.sh
+RUN chmod +x /data/mmwvrru-loop.sh
+CMD ["/data/mmwvrru-loop.sh"]

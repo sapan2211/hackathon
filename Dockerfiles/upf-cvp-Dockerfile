@@ -1,0 +1,4 @@
+FROM docker.io/sapan2211/curl
+ADD upfcvp-loop.sh /data/upfcvp-loop.sh
+RUN chmod +x /data/upfcvp-loop.sh
+CMD ["/data/upfcvp-loop.sh"]

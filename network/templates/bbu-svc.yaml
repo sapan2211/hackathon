@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: 2018-06-03T15:21:51Z
+  labels:
+    run: bbu
+  name: bbu
+  namespace: {{ .Values.namespace }}
+spec:
+  ports:
+  - port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    run: bbu
+  sessionAffinity: None
+  type: ClusterIP
+status:
+  loadBalancer: {}

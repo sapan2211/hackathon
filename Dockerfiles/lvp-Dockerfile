@@ -1,0 +1,4 @@
+FROM docker.io/sapan2211/curl
+ADD lvp-loop.sh /data/lvp-loop.sh
+RUN chmod +x /data/lvp-loop.sh
+CMD ["/data/lvp-loop.sh"]

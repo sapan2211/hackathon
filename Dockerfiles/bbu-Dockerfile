@@ -1,0 +1,4 @@
+FROM docker.io/sapan2211/curl
+ADD bbu-loop.sh /data/bbu-loop.sh
+RUN chmod +x /data/bbu-loop.sh
+CMD ["/data/bbu-loop.sh"]
