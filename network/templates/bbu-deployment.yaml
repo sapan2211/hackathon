@@ -36,6 +36,16 @@ spec:
         - name: PY_SERVER
           value: {{ .Values.connection.bbu }}
         resources: {}
+      - image: {{ .Values.image.bbu.client }}
+        imagePullPolicy: Always
+        name: bbuclient2
+        postStart:
+        exec:
+          command: ["/bin/sh", "-c", "sleep 10"]
+        env:
+        - name: PY_SERVER
+          value: {{ .Values.connection.bbu2 }}
+        resources: {}
       - image: {{ .Values.image.bbu.server }}
         imagePullPolicy: Always
         name: bbuserver

@@ -1,4 +1,4 @@
-namespace: default
+namespace: new-ns
 connection:
   mmwv: mmwvrru
   mb: mbrru
@@ -7,6 +7,7 @@ connection:
   mbrru: bbu
   lbrru: bbu
   bbu: upflvp
+  bbu2: upfcvp
   upflvp: lvp
   upfcvp: cvp
 image:
