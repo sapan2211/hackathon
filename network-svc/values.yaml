@@ -1,0 +1,54 @@
+namespace: default
+connection:
+  #mmwv: mmwvrru
+  #mb: mbrru
+  #lb: lbrru
+  #mmwvrru: bbu
+  #mbrru: bbu
+  #lbrru: bbu
+  #bbu: upflvp
+  #upflvp: lvp
+  #upfcvp: cvp
+  mmwv: mmwv
+  mb: mb
+  lb: lb
+  mmwvrru: mmwvrru
+  mbrru: mbrru
+  lbrru: lbrru
+  bbu: bbu
+  upflvp: upflvp
+  upfcvp: upfcvp
+image:
+  mmwv:
+    server: docker.io/sapan2211/python:server
+    client: docker.io/sapan2211/python:client
+  mb: 
+    server: docker.io/sapan2211/python:server
+    client: docker.io/sapan2211/python:client
+  lb: 
+    server: docker.io/sapan2211/python:server
+    client: docker.io/sapan2211/python:client
+  mmwvrru:
+    server: docker.io/sapan2211/python:server
+    client: docker.io/sapan2211/python:client
+  mbrru: 
+    server: docker.io/sapan2211/python:server
+    client: docker.io/sapan2211/python:client
+  lbrru: 
+    server: docker.io/sapan2211/python:server
+    client: docker.io/sapan2211/python:client
+  bbu: 
+    server: docker.io/sapan2211/python:server
+    client: docker.io/sapan2211/python:client
+  upflvp: 
+    server: docker.io/sapan2211/python:server
+    client: docker.io/sapan2211/python:client
+  lvp: 
+    server: docker.io/sapan2211/python:server
+    client: docker.io/sapan2211/python:client
+  upfcvp: 
+    server: docker.io/sapan2211/python:server
+    client: docker.io/sapan2211/python:client
+  cvp: 
+    server: docker.io/sapan2211/python:server
+    client: docker.io/sapan2211/python:client

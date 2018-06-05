@@ -1,4 +1,0 @@
-FROM docker.io/sapan2211/curl
-ADD mbrru-loop.sh /data/mbrru-loop.sh
-RUN chmod +x /data/mbrru-loop.sh
-CMD ["/data/mbrru-loop.sh"]

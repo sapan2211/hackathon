@@ -1,4 +1,0 @@
-FROM docker.io/sapan2211/curl
-ADD lb-loop.sh /data/lb-loop.sh
-RUN chmod +x /data/lb-loop.sh
-CMD ["/data/lb-loop.sh"]

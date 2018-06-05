@@ -7,11 +7,8 @@ metadata:
   generation: 1
   labels:
     run: mmwv
-  name: {{ .Values.name.mmwv }}
+  name: mmwv
   namespace: {{ .Values.namespace }}
-  resourceVersion: "65465"
-  selfLink: /apis/extensions/v1beta1/namespaces/default/deployments/mmwv
-  uid: 8340cd2f-673c-11e8-9da6-0e5035f38654
 spec:
   replicas: 1
   selector:
@@ -32,15 +29,16 @@ spec:
       - image: {{ .Values.image.mmwv.client }}
         imagePullPolicy: Always
         name: mmwvclient
+        postStart:
+        exec:
+          command: ["/bin/sh", "-c", "sleep 10"]
+        env:
+        - name: PY_SERVER
+          value: {{ .Values.connection.mmwv }}
         resources: {}
-        terminationMessagePath: /dev/termination-log
-        terminationMessagePolicy: File
       - image: {{ .Values.image.mmwv.server }}
         imagePullPolicy: Always
         name: mmwvserver
-        resources: {}
-        terminationMessagePath: /dev/termination-log
-        terminationMessagePolicy: File
         ports:
         - containerPort: 8080
       dnsPolicy: ClusterFirst
@@ -48,16 +46,3 @@ spec:
       schedulerName: default-scheduler
       securityContext: {}
       terminationGracePeriodSeconds: 30
-status:
-  availableReplicas: 1
-  conditions:
-  - lastTransitionTime: 2018-06-03T14:43:43Z
-    lastUpdateTime: 2018-06-03T14:43:43Z
-    message: Deployment has minimum availability.
-    reason: MinimumReplicasAvailable
-    status: "True"
-    type: Available
-  observedGeneration: 1
-  readyReplicas: 1
-  replicas: 1
-  updatedReplicas: 1

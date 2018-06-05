@@ -1,0 +1,4 @@
+FROM python:2
+RUN mkdir /data
+ADD echo_server.py /data/echo_server.py
+CMD ["python","/data/echo_server.py"]

@@ -1,47 +1,45 @@
-namespace: ericsson-ns
-name:
-  mmwv: mmwv
-  mb: midband
-  lb: lowband
-  mmwvrru: rru1
-  mbrru: rru2
-  lbrru: rru3
-  bbu: bbu
-  upflvp: upf1
-  lvp: lvp
-  upfcvp: upf2
-  cvp: cvp 
+namespace: default
+connection:
+  mmwv: mmwvrru
+  mb: mbrru
+  lb: lbrru
+  mmwvrru: bbu
+  mbrru: bbu
+  lbrru: bbu
+  bbu: upflvp
+  upflvp: lvp
+  upfcvp: cvp
 image:
   mmwv:
-    server: docker.io/sapan2211/goserver
-    client: docker.io/sapan2211/client:mmwv
+    server: docker.io/sapan2211/python:server
+    client: docker.io/sapan2211/python:client
   mb: 
-    server: docker.io/sapan2211/goserver
-    client: docker.io/sapan2211/client:mb
+    server: docker.io/sapan2211/python:server
+    client: docker.io/sapan2211/python:client
   lb: 
-    server: docker.io/sapan2211/goserver
-    client: docker.io/sapan2211/client:lb
+    server: docker.io/sapan2211/python:server
+    client: docker.io/sapan2211/python:client
   mmwvrru:
-    server: docker.io/sapan2211/goserver
-    client: docker.io/sapan2211/client:mmwvrru
+    server: docker.io/sapan2211/python:server
+    client: docker.io/sapan2211/python:client
   mbrru: 
-    server: docker.io/sapan2211/goserver
-    client: docker.io/sapan2211/client:mbrru
+    server: docker.io/sapan2211/python:server
+    client: docker.io/sapan2211/python:client
   lbrru: 
-    server: docker.io/sapan2211/goserver
-    client: docker.io/sapan2211/client:lbrru
+    server: docker.io/sapan2211/python:server
+    client: docker.io/sapan2211/python:client
   bbu: 
-    server: docker.io/sapan2211/goserver
-    client: docker.io/sapan2211/client:bbu
+    server: docker.io/sapan2211/python:server
+    client: docker.io/sapan2211/python:client
   upflvp: 
-    server: docker.io/sapan2211/goserver
-    client: docker.io/sapan2211/client:upflvp
+    server: docker.io/sapan2211/python:server
+    client: docker.io/sapan2211/python:client
   lvp: 
-    server: docker.io/sapan2211/goserver
-    client: docker.io/sapan2211/client:lvp
+    server: docker.io/sapan2211/python:server
+    client: docker.io/sapan2211/python:client
   upfcvp: 
-    server: docker.io/sapan2211/goserver
-    client: docker.io/sapan2211/client:upfcvp
+    server: docker.io/sapan2211/python:server
+    client: docker.io/sapan2211/python:client
   cvp: 
-    server: docker.io/sapan2211/goserver
-    client: docker.io/sapan2211/client:cvp
+    server: docker.io/sapan2211/python:server
+    client: docker.io/sapan2211/python:client

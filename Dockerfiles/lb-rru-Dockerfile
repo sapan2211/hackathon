@@ -1,4 +1,0 @@
-FROM docker.io/sapan2211/curl
-ADD lbrru-loop.sh /data/lbrru-loop.sh
-RUN chmod +x /data/lbrru-loop.sh
-CMD ["/data/lbrru-loop.sh"]

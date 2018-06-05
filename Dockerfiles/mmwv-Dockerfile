@@ -1,4 +1,0 @@
-FROM docker.io/sapan2211/curl
-ADD mmwv-loop.sh /data/mmwv-loop.sh
-RUN chmod +x /data/mmwv-loop.sh
-CMD ["/data/mmwv-loop.sh"]

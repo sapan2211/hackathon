@@ -1,0 +1,768 @@
+[debug] Created tunnel using local port: '46361'
+
+[debug] SERVER: "127.0.0.1:46361"
+
+[debug] Original chart version: ""
+[debug] CHART PATH: /home/ubuntu/hackathon/network
+
+NAME:   n1
+REVISION: 1
+RELEASED: Tue Jun  5 20:49:06 2018
+CHART: network-0.1.0
+USER-SUPPLIED VALUES:
+{}
+
+COMPUTED VALUES:
+connection:
+  bbu: bbu
+  lb: lb
+  lbrru: lbrru
+  mb: mb
+  mbrru: mbrru
+  mmwv: mmwv
+  mmwvrru: mmwvrru
+  upfcvp: upfcvp
+  upflvp: upflvp
+image:
+  bbu:
+    client: docker.io/sapan2211/python:client
+    server: docker.io/sapan2211/python:server
+  cvp:
+    client: docker.io/sapan2211/python:client
+    server: docker.io/sapan2211/python:server
+  lb:
+    client: docker.io/sapan2211/python:client
+    server: docker.io/sapan2211/python:server
+  lbrru:
+    client: docker.io/sapan2211/python:client
+    server: docker.io/sapan2211/python:server
+  lvp:
+    client: docker.io/sapan2211/python:client
+    server: docker.io/sapan2211/python:server
+  mb:
+    client: docker.io/sapan2211/python:client
+    server: docker.io/sapan2211/python:server
+  mbrru:
+    client: docker.io/sapan2211/python:client
+    server: docker.io/sapan2211/python:server
+  mmwv:
+    client: docker.io/sapan2211/python:client
+    server: docker.io/sapan2211/python:server
+  mmwvrru:
+    client: docker.io/sapan2211/python:client
+    server: docker.io/sapan2211/python:server
+  upfcvp:
+    client: docker.io/sapan2211/python:client
+    server: docker.io/sapan2211/python:server
+  upflvp:
+    client: docker.io/sapan2211/python:client
+    server: docker.io/sapan2211/python:server
+namespace: kumar-ns
+
+HOOKS:
+MANIFEST:
+
+---
+# Source: network/templates/bbu-svc.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: bbu
+  labels:
+    run: bbu
+spec:
+  ports:
+    - port: 8080
+  selector:
+    run: bbu
+  clusterIP: None
+---
+# Source: network/templates/cvp-svc.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: cvp
+  labels:
+    run: cvp
+spec:
+  ports:
+    - port: 8080
+  selector:
+    run: cvp
+  clusterIP: None
+---
+# Source: network/templates/lb-rru-svc.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: lbrru
+  labels:
+    run: lbrru
+spec:
+  ports:
+    - port: 8080
+  selector:
+    run: lbrru
+  clusterIP: None
+---
+# Source: network/templates/lb-svc.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: lb
+  labels:
+    run: lb
+spec:
+  ports:
+    - port: 8080
+  selector:
+    run: lb
+  clusterIP: None
+---
+# Source: network/templates/lvp-svc.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: lvp
+  labels:
+    run: lvp
+spec:
+  ports:
+    - port: 8080
+  selector:
+    run: lvp
+  clusterIP: None
+---
+# Source: network/templates/mb-rru-svc.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: mbrru
+  labels:
+    run: mbrru
+spec:
+  ports:
+    - port: 8080
+  selector:
+    run: mbrru
+  clusterIP: None
+---
+# Source: network/templates/mb-svc.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: mb
+  labels:
+    run: mb
+spec:
+  ports:
+    - port: 8080
+  selector:
+    run: mb
+  clusterIP: None
+---
+# Source: network/templates/mmwv-rru-svc.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: mmwvrru
+  labels:
+    run: mmwvrru
+spec:
+  ports:
+    - port: 8080
+  selector:
+    run: mmwvrru
+  clusterIP: None
+---
+# Source: network/templates/mmwv-svc.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: mmwv
+  labels:
+    run: mmwv
+spec:
+  ports:
+    - port: 8080
+  selector:
+    run: mmwv
+  clusterIP: None
+---
+# Source: network/templates/upf-cvp-svc.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: upfcvp
+  labels:
+    run: upfcvp
+spec:
+  ports:
+    - port: 8080
+  selector:
+    run: upfcvp
+  clusterIP: None
+---
+# Source: network/templates/upf-lvp-svc.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: upflvp
+  labels:
+    run: upflvp
+spec:
+  ports:
+    - port: 8080
+  selector:
+    run: upflvp
+  clusterIP: None
+---
+# Source: network/templates/bbu-deployment.yaml
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "1"
+  creationTimestamp: 2018-06-03T14:43:43Z
+  generation: 1
+  labels:
+    run: bbu
+  name: bbu
+  namespace: kumar-ns
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: bbu
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        run: bbu
+    spec:
+      containers:
+      - image: docker.io/sapan2211/python:client
+        imagePullPolicy: Always
+        name: bbuclient
+        env:
+        - name: PY_SERVER
+          value: bbu
+        resources: {}
+      - image: docker.io/sapan2211/python:server
+        imagePullPolicy: Always
+        name: bbuserver
+        postStart:
+        exec:
+          command: ["/bin/sh", "-c", "sleep 5"]
+        ports:
+        - containerPort: 8080
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+---
+# Source: network/templates/cvp-deployment.yaml
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "1"
+  creationTimestamp: 2018-06-03T14:43:43Z
+  generation: 1
+  labels:
+    run: cvp
+  name: cvp
+  namespace: kumar-ns
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: cvp
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        run: cvp
+    spec:
+      containers:
+      - image: docker.io/sapan2211/python:client
+        imagePullPolicy: Always
+        name: cvpclient
+        env:
+        - name: PY_SERVER
+          value: 
+        resources: {}
+      - image: docker.io/sapan2211/python:server
+        imagePullPolicy: Always
+        name: cvpserver
+        postStart:
+        exec:
+          command: ["/bin/sh", "-c", "sleep 5"]
+        ports:
+        - containerPort: 8080
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+---
+# Source: network/templates/lb-deployment.yaml
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "1"
+  creationTimestamp: 2018-06-03T14:43:43Z
+  generation: 1
+  labels:
+    run: lb
+  name: lb
+  namespace: kumar-ns
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: lb
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        run: lb
+    spec:
+      containers:
+      - image: docker.io/sapan2211/python:client
+        imagePullPolicy: Always
+        name: lbclient
+        env:
+        - name: PY_SERVER
+          value: lb
+        resources: {}
+      - image: docker.io/sapan2211/python:server
+        imagePullPolicy: Always
+        name: lbserver
+        postStart:
+        exec:
+          command: ["/bin/sh", "-c", "sleep 5"]
+        ports:
+        - containerPort: 8080
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+---
+# Source: network/templates/lb-rru-deployment.yaml
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "1"
+  creationTimestamp: 2018-06-03T14:43:43Z
+  generation: 1
+  labels:
+    run: lbrru
+  name: lbrru
+  namespace: kumar-ns
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: lbrru
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        run: lbrru
+    spec:
+      containers:
+      - image: docker.io/sapan2211/python:client
+        imagePullPolicy: Always
+        name: lbrruclient
+        env:
+        - name: PY_SERVER
+          value: lbrru
+        resources: {}
+      - image: docker.io/sapan2211/python:server
+        imagePullPolicy: Always
+        name: lbrruserver
+        postStart:
+        exec:
+          command: ["/bin/sh", "-c", "sleep 5"]
+        ports:
+        - containerPort: 8080
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+---
+# Source: network/templates/lvp-deployment.yaml
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "1"
+  creationTimestamp: 2018-06-03T14:43:43Z
+  generation: 1
+  labels:
+    run: lvp
+  name: lvp
+  namespace: kumar-ns
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: lvp
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        run: lvp
+    spec:
+      containers:
+      - image: docker.io/sapan2211/python:client
+        imagePullPolicy: Always
+        name: lvpclient
+        env:
+        - name: PY_SERVER
+          value: 
+        resources: {}
+      - image: docker.io/sapan2211/python:server
+        imagePullPolicy: Always
+        name: lvpserver
+        postStart:
+        exec:
+          command: ["/bin/sh", "-c", "sleep 5"]
+        ports:
+        - containerPort: 8080
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+---
+# Source: network/templates/mb-deployment.yaml
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "1"
+  creationTimestamp: 2018-06-03T14:43:43Z
+  generation: 1
+  labels:
+    run: mb
+  name: mb
+  namespace: kumar-ns
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: mb
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        run: mb
+    spec:
+      containers:
+      - image: docker.io/sapan2211/python:client
+        imagePullPolicy: Always
+        name: mbclient
+        env:
+        - name: PY_SERVER
+          value: mb
+        resources: {}
+      - image: docker.io/sapan2211/python:server
+        imagePullPolicy: Always
+        name: mbserver
+        postStart:
+        exec:
+          command: ["/bin/sh", "-c", "sleep 5"]
+        ports:
+        - containerPort: 8080
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+---
+# Source: network/templates/mb-rru-deployment.yaml
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "1"
+  creationTimestamp: 2018-06-03T14:43:43Z
+  generation: 1
+  labels:
+    run: mbrru
+  name: mbrru
+  namespace: kumar-ns
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: mbrru
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        run: mbrru
+    spec:
+      containers:
+      - image: docker.io/sapan2211/python:client
+        imagePullPolicy: Always
+        name: mbrruclient
+        env:
+        - name: PY_SERVER
+          value: mbrru
+        resources: {}
+      - image: docker.io/sapan2211/python:server
+        imagePullPolicy: Always
+        name: mbrruserver
+        postStart:
+        exec:
+          command: ["/bin/sh", "-c", "sleep 5"]
+        ports:
+        - containerPort: 8080
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+---
+# Source: network/templates/mmwv-deployment.yaml
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "1"
+  creationTimestamp: 2018-06-03T14:43:43Z
+  generation: 1
+  labels:
+    run: mmwv
+  name: mmwv
+  namespace: kumar-ns
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: mmwv
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        run: mmwv
+    spec:
+      containers:
+      - image: docker.io/sapan2211/python:client
+        imagePullPolicy: Always
+        name: mmwvclient
+        env:
+        - name: PY_SERVER
+          value: mmwv
+        resources: {}
+      - image: docker.io/sapan2211/python:server
+        imagePullPolicy: Always
+        name: mmwvserver
+        postStart:
+        exec:
+          command: ["/bin/sh", "-c", "sleep 5"]
+        ports:
+        - containerPort: 8080
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+---
+# Source: network/templates/mmwv-rru-deployment.yaml
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "1"
+  creationTimestamp: 2018-06-03T14:43:43Z
+  generation: 1
+  labels:
+    run: mmwvrru
+  name: mmwvrru
+  namespace: kumar-ns
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: mmwvrru
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        run: mmwvrru
+    spec:
+      containers:
+      - image: docker.io/sapan2211/python:client
+        imagePullPolicy: Always
+        name: mmwvrruclient
+        env:
+        - name: PY_SERVER
+          value: mmwvrru
+        resources: {}
+      - image: docker.io/sapan2211/python:server
+        imagePullPolicy: Always
+        name: mmwvrruserver
+        postStart:
+        exec:
+          command: ["/bin/sh", "-c", "sleep 5"]
+        ports:
+        - containerPort: 8080
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+---
+# Source: network/templates/upf-cvp-deployment.yaml
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "1"
+  creationTimestamp: 2018-06-03T14:43:43Z
+  generation: 1
+  labels:
+    run: upfcvp
+  name: upfcvp
+  namespace: kumar-ns
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: upfcvp
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        run: upfcvp
+    spec:
+      containers:
+      - image: docker.io/sapan2211/python:client
+        imagePullPolicy: Always
+        name: upfcvpclient
+        env:
+        - name: PY_SERVER
+          value: upfcvp
+        resources: {}
+      - image: docker.io/sapan2211/python:server
+        imagePullPolicy: Always
+        name: upfcvpserver
+        postStart:
+        exec:
+          command: ["/bin/sh", "-c", "sleep 5"]
+        ports:
+        - containerPort: 8080
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+---
+# Source: network/templates/upf-lvp-deployment.yaml
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "1"
+  creationTimestamp: 2018-06-03T14:43:43Z
+  generation: 1
+  labels:
+    run: upflvp
+  name: upflvp
+  namespace: kumar-ns
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: upflvp
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        run: upflvp
+    spec:
+      containers:
+      - image: docker.io/sapan2211/python:client
+        imagePullPolicy: Always
+        name: upflvpclient
+        env:
+        - name: PY_SERVER
+          value: upflvp
+        resources: {}
+      - image: docker.io/sapan2211/python:server
+        imagePullPolicy: Always
+        name: upflvpserver
+        postStart:
+        exec:
+          command: ["/bin/sh", "-c", "sleep 5"]
+        ports:
+        - containerPort: 8080
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30

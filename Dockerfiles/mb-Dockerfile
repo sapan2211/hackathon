@@ -1,4 +1,0 @@
-FROM docker.io/sapan2211/curl
-ADD mb-loop.sh /data/mb-loop.sh
-RUN chmod +x /data/mb-loop.sh
-CMD ["/data/mb-loop.sh"]

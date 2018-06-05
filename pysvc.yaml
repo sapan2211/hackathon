@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: kumar-ns
+  name: pyserver1
+  labels:
+    run: pyserver1
+spec:
+  ports:
+    - port: 8080
+  selector:
+    run: pyserver1
+  clusterIP: None
